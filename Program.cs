@@ -36,6 +36,13 @@ namespace stay_classy_cs
             public Address ShippingAddress { get; set; }
         }
 
+        static void PrintShippingInfo(string name, Address address)
+        {
+            Console.WriteLine(name);
+            Console.WriteLine(address.PrintableAddress());
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
             Person JohnDoe = new Person()
@@ -57,16 +64,8 @@ namespace stay_classy_cs
             people.Add(JohnDoe);
             companies.Add(Acme);
 
-            void PrintShippingInfo(string name, Address address)
-            {
-                Console.WriteLine(name);
-                Console.WriteLine(address.PrintableAddress());
-                Console.WriteLine();
-            }
-
             Console.WriteLine("Personal Directory:");
             people.ForEach((p) => PrintShippingInfo(p.FullName(), p.ShippingAddress));
-            Console.WriteLine();
 
             Console.WriteLine("Professional Directory:");
             companies.ForEach((c) => PrintShippingInfo(c.Name, c.ShippingAddress));
